@@ -99,10 +99,16 @@ def all_data(filename):
 
     all_data = []
 
-    # TODO: replace this with your code
+    opened_file = open(filename)
+
+    for line in opened_file:
+        given_animal_info = line.split("|")
+        given_animal_info = tuple(given_animal_info)
+        all_data.append(given_animal_info)
 
     return all_data
 
+all_data("villagers.csv")
 
 def find_motto(filename, villager_name):
     """Return the villager's motto.
