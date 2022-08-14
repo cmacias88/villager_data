@@ -134,7 +134,7 @@ def find_motto(filename, villager_name):
         if name == villager_name:
             return motto
         
-print(find_motto("villagers.csv", "Ryanvollo"))
+# print(find_motto("villagers.csv"))
 
 def find_likeminded_villagers(filename, villager_name):
     """Return a set of villagers with the same personality as the given villager.
@@ -151,4 +151,22 @@ def find_likeminded_villagers(filename, villager_name):
         {'Bella', ..., 'Carmen'}
     """
 
-    # TODO: replace this with your code
+    same_personality = set()
+
+    opened_file = open(filename)
+
+    for line in opened_file:
+        name, _, personality = line.rstrip().split('|')[:3]
+        if villager_name == name:
+            chosen_personality = personality
+            break 
+    
+    if chosen_personality:
+        for line in opened_file:
+            name, _, personality = line.rstrip().split('|')[:3]
+            if personality == chosen_personality:
+                same_personality.add(name)
+
+    return same_personality
+
+print(find_likeminded_villagers('villagers.csv', 'Audie'))
