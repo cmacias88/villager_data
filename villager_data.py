@@ -47,6 +47,8 @@ def get_villagers_by_species(filename, search_string="All"):
 
     return sorted(specific_species)
 
+# print(get_villagers_by_species("villagers.csv"))
+
 def all_names_by_hobby(filename):
     """Return a list of lists containing villagers' names, grouped by hobby.
 
@@ -109,6 +111,8 @@ def all_data(filename):
 
     return all_data
 
+# print(all_data("villagers.csv"))
+
 def find_motto(filename, villager_name):
     """Return the villager's motto.
 
@@ -123,21 +127,14 @@ def find_motto(filename, villager_name):
         - str: the villager's motto or None
     """
 
-#     opened_file = open(filename)
+    opened_file = open(filename)
 
-#     name_and_motto = []
-
-#     for line in opened_file:
-#         given_animal_info = line.split("|")
-#         given_name = given_animal_info[0]
-#         given_motto = given_animal_info[-1]
-#         name_and_motto.append([given_name, given_motto])
-
-#     for villager in name_and_motto:
-#         if villager[0] == print(villager_name):
-#             return(villager[1])
-            
-# find_motto("villagers.csv", "Kyle")
+    for line in opened_file:
+        name, _, _, _, motto = line.rstrip().split("|")
+        if name == villager_name:
+            return motto
+        
+print(find_motto("villagers.csv", "Ryanvollo"))
 
 def find_likeminded_villagers(filename, villager_name):
     """Return a set of villagers with the same personality as the given villager.
