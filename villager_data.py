@@ -151,6 +151,8 @@ def find_likeminded_villagers(filename, villager_name):
         {'Bella', ..., 'Carmen'}
     """
 
+    # gives an empty set depending on the position of the villager chosen
+
     same_personality = set()
 
     opened_file = open(filename)
@@ -169,4 +171,4 @@ def find_likeminded_villagers(filename, villager_name):
 
     return same_personality
 
-print(find_likeminded_villagers('villagers.csv', 'Audie'))
+print(find_likeminded_villagers('villagers.csv', 'Kyle'))
